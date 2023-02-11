@@ -1,33 +1,28 @@
 ---
 import BaseHead from "../components/BaseHead.astro"
+import BaseLayout from "../components/BaseLayout.astro"
 import BlogHeader from "../components/BlogHeader.astro"
 import BlogPost from "../components/BlogPost.astro"
+import Gallery from "../components/Gallery.astro"
+import Header from "../components/Header.astro"
+import LightboxComponent from "../components/Lightbox"
 
 const { content } = Astro.props
-// const {
-//   title,
-//   description,
-//   publishDate,
-//   author,
-//   authorURL,
-//   heroImage,
-//   permalink,
-//   alt,
-// } = content
+const { title, description, permalink } = content
+const { images } = content
 ---
 
 <html lang={content.lang || "en"}>
   <head>
-    <!-- <BaseHead {title} {description} {permalink} /> -->
+    <BaseHead {title} {description} {permalink} />
   </head>
 
   <body>
-    <!-- <BlogHeader /> -->
-    <div class="wrapper">
-      <slot />
-      <!-- <BlogPost {title} {author} {authorURL} {heroImage} {publishDate} {alt}>
-				<slot />
-			</BlogPost> -->
-    </div>
+    <BaseLayout>
+      <div class="wrapper">
+        <slot />
+        <LightboxComponent client:load slides={images} />
+      </div>
+    </BaseLayout>
   </body>
 </html>
