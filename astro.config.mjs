@@ -47,6 +47,29 @@ export default defineConfig({
               },
             ],
           },
+          {
+            name: 'galleries',
+            label: 'Galleries',
+            label_singular: 'Gallery',
+            folder: 'src/pages/galleries',
+            craete: true,
+            delete: true,
+            fields: [
+              { name: 'title', widget: 'string', label: 'Gallery Title'},
+              { name: 'images', label: 'Images' },
+              // { name: 'images', widget: 'list', label: 'Images', summary: '', field: {
+              //   name: 'image', widget: 'image', label: 'Image',
+              // }}
+              {
+                name: 'layout',
+                widget: 'select',
+                default: '../../layouts/Gallery.astro',
+                options: [
+                  { label: 'Gallery', value: '../../layouts/Gallery.astro' },
+                ],
+              },
+            ]
+          }
         ],
       },
       previewStyles: ['/src/styles/blog.css'],
