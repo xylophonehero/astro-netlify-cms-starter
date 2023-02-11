@@ -1,0 +1,32 @@
+---
+import BaseHead from "../components/BaseHead.astro"
+import BaseLayout from "../components/BaseLayout.astro"
+
+const { content } = Astro.props
+const {
+  title,
+  description,
+  publishDate,
+  author,
+  authorURL,
+  heroImage,
+  permalink,
+  alt,
+  seo,
+} = content
+console.log(content)
+---
+
+<html lang={content.lang || "en"}>
+  <head>
+    <BaseHead {...seo} {permalink} />
+  </head>
+
+  <body>
+    <BaseLayout>
+      <div class="prose max-w-prose">
+        <slot />
+      </div>
+    </BaseLayout>
+  </body>
+</html>

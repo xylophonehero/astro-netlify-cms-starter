@@ -1,0 +1,41 @@
+---
+import BaseHead from "../components/BaseHead.astro"
+import BaseLayout from "../components/BaseLayout.astro"
+import Button from "../components/Button.astro"
+import Input from "../components/Input.astro"
+import Textarea from "../components/Textarea.astro"
+
+const { content } = Astro.props
+const {
+  title,
+  description,
+  publishDate,
+  author,
+  authorURL,
+  heroImage,
+  permalink,
+  alt,
+} = content
+---
+
+<html lang={content.lang || "en"}>
+  <head>
+    <BaseHead {title} {description} {permalink} />
+  </head>
+
+  <body>
+    <BaseLayout>
+      <div class="prose contain-prose">
+        <slot />
+      </div>
+      <form class="flex flex-col space-y-4 contain-prose">
+        <Input name="name" label="Name" type="text" />
+        <Input name="email" label="Email" type="email" />
+        <Textarea name="question" label="Question" />
+        <div>
+          <Button type="submit">Submit</Button>
+        </div>
+      </form>
+    </BaseLayout>
+  </body>
+</html>

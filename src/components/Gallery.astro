@@ -1,0 +1,47 @@
+---
+import LightboxComponent from "./Lightbox"
+export interface Props {
+  images: {
+    src: string
+    title: string
+    alt: string
+  }[]
+}
+
+const { images } = Astro.props as Props
+---
+
+<!-- <div class="grid grid-container">
+  {
+    images.map(({ alt, src, title }) => (
+      <button onclick={} class="single-grid">
+        <img src={src} alt={alt} title={title} />
+      </button>
+    ))
+  }
+</div> -->
+<LightboxComponent client:load slides={images} />
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+    grid-template-rows: masonry;
+    gap: var(--size-2);
+  }
+
+  button {
+    background-color: none;
+    padding: 0px;
+  }
+
+  .single-grid {
+    display: grid;
+    place-items: center;
+  }
+
+  .grid-container {
+    /* background: var(--gradient-11); */
+    padding: var(--size-4);
+  }
+</style>

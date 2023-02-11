@@ -1,0 +1,35 @@
+---
+import BaseHead from "../components/BaseHead.astro"
+import BaseLayout from "../components/BaseLayout.astro"
+import LightboxComponent from "../components/Lightbox"
+
+const { content } = Astro.props
+const {
+  title,
+  description,
+  publishDate,
+  author,
+  authorURL,
+  heroImage,
+  permalink,
+  images,
+  seo,
+} = content
+---
+
+<html lang={content.lang || "en"}>
+  <head>
+    <BaseHead {...seo} {permalink} />
+  </head>
+
+  <body>
+    <BaseLayout>
+      <div class="wrapper">
+        <div class="prose">
+          <slot />
+        </div>
+        <LightboxComponent client:load slides={images} />
+      </div>
+    </BaseLayout>
+  </body>
+</html>

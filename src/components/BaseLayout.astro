@@ -1,0 +1,52 @@
+<div class="flex flex-col min-height[100%] main-wrapper">
+  <header class="bg-brand">
+    <div class="wrapper flex justify-between items-center">
+      <a href="/">
+        <img class="logo" src="/logo.png" alt="Logo" />
+      </a>
+      <nav>
+        <ul class="flex space-x-2">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/book">Book</a>
+          </li>
+          <li>
+            <a href="/Galleries">Gallery</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="flex-1 py-8 wrapper flex flex-col space-y-8">
+    <slot />
+  </main>
+  <footer>
+    <div class="wrapper">JJ Heath Sports Massage Therapy</div>
+  </footer>
+</div>
+
+<style>
+  .main-wrapper {
+    /* display: flex;
+    flex-direction: column; */
+    min-block-size: 100%;
+  }
+
+  .logo {
+    max-height: 80px;
+  }
+
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
